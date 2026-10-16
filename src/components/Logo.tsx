@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 
-export function Logo({ className = "" }: { className?: string }) {
+/**
+ * Logo officiel STARTWISE.
+ * Source : PNG noir sur fond transparent.
+ * - `onDark` = sur une section sombre → rendu en crème (invert).
+ * - défaut = sur fond clair → rendu noir (sans filtre).
+ */
+export function Logo({
+  className = "",
+  onDark = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+}) {
   return (
     <Link
       to="/"
@@ -10,7 +22,9 @@ export function Logo({ className = "" }: { className?: string }) {
       <img
         src="/startwise-logo.png"
         alt="STARTWISE"
-        className="h-6 w-auto brightness-0 invert transition-opacity duration-300 hover:opacity-80 sm:h-7"
+        className={`h-6 w-auto transition-opacity duration-300 hover:opacity-70 sm:h-7 ${
+          onDark ? "[filter:brightness(0)_invert(0.95)]" : ""
+        }`}
         width={1280}
         height={217}
         draggable={false}

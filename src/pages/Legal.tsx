@@ -10,16 +10,19 @@ export default function Legal() {
     <>
       <PageHeader eyebrow="Informations légales" title="Mentions légales" />
 
-      <section className="pb-28 pt-8">
+      <section className="bg-paper-100 pb-28 pt-8">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <Reveal>
-            <div className="space-y-12 text-pretty leading-relaxed text-cream/70">
+            <div className="space-y-12 text-pretty leading-relaxed text-stone-600">
               <Block title="Éditeur du site">
                 <p>
-                  Le présent site est édité par <strong className="text-cream">{SITE.legalName}</strong>,
-                  société à responsabilité limitée de droit luxembourgeois.
+                  Le présent site est édité par{" "}
+                  <strong className="font-medium text-ink-900">
+                    {SITE.legalName}
+                  </strong>
+                  , société à responsabilité limitée de droit luxembourgeois.
                 </p>
-                <ul className="mt-4 space-y-1.5 text-cream/65">
+                <ul className="mt-4 space-y-1.5">
                   <li>Siège social : {SITE.address}</li>
                   <li>{SITE.rcs}</li>
                   <li>Numéro de TVA : LU {SITE.tva.replace(/^LU/, "")}</li>
@@ -27,7 +30,7 @@ export default function Legal() {
                     Email :{" "}
                     <a
                       href={`mailto:${SITE.email}`}
-                      className="text-gold-300 transition hover:text-gold-200"
+                      className="text-pine-700 transition hover:text-pine-600"
                     >
                       {SITE.email}
                     </a>
@@ -76,7 +79,7 @@ export default function Legal() {
                   l'adresse{" "}
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="text-gold-300 transition hover:text-gold-200"
+                    className="text-pine-700 transition hover:text-pine-600"
                   >
                     {SITE.email}
                   </a>
@@ -115,8 +118,9 @@ export default function Legal() {
                 </p>
               </Block>
 
-              <p className="border-t border-cream/10 pt-8 text-sm text-cream/40">
-                Dernière mise à jour : {new Date().toLocaleDateString("fr-FR", {
+              <p className="border-t border-ink-900/10 pt-8 text-sm text-stone-400">
+                Dernière mise à jour :{" "}
+                {new Date().toLocaleDateString("fr-FR", {
                   year: "numeric",
                   month: "long",
                 })}
@@ -133,7 +137,7 @@ export default function Legal() {
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div>
-      <h2 className="font-display text-2xl text-cream">{title}</h2>
+      <h2 className="font-display text-2xl text-ink-900">{title}</h2>
       <div className="mt-4 space-y-2">{children}</div>
     </div>
   );

@@ -23,7 +23,7 @@ export default function Solutions() {
       />
 
       {/* Produits */}
-      <section className="py-20 sm:py-28">
+      <section className="bg-paper-100 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
             <SectionHeading
@@ -36,27 +36,27 @@ export default function Solutions() {
           <div className="mt-14 space-y-6">
             {PRODUCTS.map((p, i) => (
               <Reveal key={p.id} delay={i * 80}>
-                <article className="group grid gap-6 rounded-2xl border border-cream/10 bg-ink-800/50 p-8 transition-all duration-500 hover:border-gold-500/35 hover:bg-ink-800 sm:grid-cols-[0.8fr_1.5fr_auto] sm:items-center sm:p-10">
+                <article className="group grid gap-6 rounded-2xl border border-ink-900/10 bg-paper-50 p-8 transition-all duration-500 hover:border-pine-600/40 hover:shadow-[0_20px_50px_-28px] hover:shadow-ink-900/40 sm:grid-cols-[0.8fr_1.5fr_auto] sm:items-center sm:p-10">
                   <div>
-                    <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-cream/45">
+                    <span className="label inline-flex items-center gap-1.5 text-stone-500">
                       <span
                         className={`h-1.5 w-1.5 rounded-full ${
                           p.status === "live"
-                            ? "bg-emerald-400"
+                            ? "bg-pine-500"
                             : p.status === "soon"
-                              ? "bg-gold-400"
-                              : "bg-cream/40"
+                              ? "bg-stone-400"
+                              : "bg-stone-300"
                         }`}
                       />
                       {p.statusLabel}
                     </span>
-                    <h3 className="mt-3 font-display text-3xl text-cream">
+                    <h3 className="mt-3 font-display text-3xl text-ink-900">
                       {p.name}
                     </h3>
-                    <p className="mt-2 text-sm text-gold-300/80">{p.category}</p>
+                    <p className="label mt-2 text-stone-500">{p.category}</p>
                   </div>
 
-                  <p className="text-pretty leading-relaxed text-cream/65">
+                  <p className="text-pretty leading-relaxed text-stone-500">
                     {p.description}
                   </p>
 
@@ -66,7 +66,7 @@ export default function Solutions() {
                         Visiter
                       </Button>
                     ) : (
-                      <span className="inline-flex rounded-full border border-cream/12 px-5 py-3 text-sm text-cream/45">
+                      <span className="label inline-flex rounded-full border border-ink-900/12 px-5 py-3 text-stone-500">
                         {p.statusLabel}
                       </span>
                     )}
@@ -78,11 +78,13 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="border-y border-cream/10 bg-forest-700/25 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      {/* Services — section verte */}
+      <section className="relative overflow-hidden bg-ink-950 py-20 text-paper-100 sm:py-28">
+        <div className="grain absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
             <SectionHeading
+              onDark
               eyebrow="Les expertises"
               title="Financement, capital & conseil"
               intro="Nous accompagnons dirigeants et investisseurs sur les décisions structurantes, avec la rigueur et le réseau d'un acteur financier luxembourgeois."
@@ -92,20 +94,20 @@ export default function Solutions() {
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             {SERVICES.map((s, i) => (
               <Reveal key={s.id} delay={(i % 2) * 90}>
-                <article className="flex h-full flex-col rounded-2xl border border-cream/10 bg-ink-900 p-8 transition-colors duration-500 hover:bg-ink-800 sm:p-10">
+                <article className="flex h-full flex-col rounded-2xl border border-paper-200/12 bg-ink-900 p-8 transition-colors duration-500 hover:bg-ink-800 sm:p-10">
                   <div className="flex items-center gap-4">
-                    <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-gold-500/30 font-display text-sm text-gold-400">
+                    <span className="label flex h-10 w-10 flex-none items-center justify-center rounded-full border border-pine-400/40 font-display text-base text-pine-400">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="text-pretty text-2xl text-cream">{s.title}</h3>
+                    <h3 className="text-pretty text-2xl text-paper-50">{s.title}</h3>
                   </div>
-                  <p className="mt-5 text-pretty leading-relaxed text-cream/65">
+                  <p className="mt-5 text-pretty leading-relaxed text-paper-200/70">
                     {s.summary}
                   </p>
-                  <ul className="mt-6 grid gap-2.5 text-sm text-cream/70 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-2.5 text-sm text-paper-200/85 sm:grid-cols-2">
                     {s.points.map((pt) => (
                       <li key={pt} className="flex items-start gap-2.5">
-                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-gold-500" />
+                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-pine-400" />
                         {pt}
                       </li>
                     ))}
@@ -118,7 +120,7 @@ export default function Solutions() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 sm:py-28">
+      <section className="bg-paper-100 py-24 sm:py-28">
         <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
           <Reveal>
             <SectionHeading

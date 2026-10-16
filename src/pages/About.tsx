@@ -38,7 +38,7 @@ const TIMELINE = [
   },
   {
     phase: "Aujourd'hui",
-    body: "STARTWISE réunit les deux : une maison luxembourgeoise qui conçoit des produits et structure le capital de ses clients, de l'idée jusqu'à la croissance.",
+    body: "STARTWISE réunit les deux : un groupe luxembourgeois qui conçoit des produits et structure le capital de ses clients, de l'idée jusqu'à la croissance.",
   },
 ];
 
@@ -61,13 +61,16 @@ export default function About() {
       />
 
       {/* Mission */}
-      <section className="py-20 sm:py-28">
+      <section className="bg-paper-100 py-20 sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-start">
           <Reveal>
-            <SectionHeading eyebrow="Notre mission" title="Donner aux dirigeants les moyens de bâtir, financer et faire durer." />
+            <SectionHeading
+              eyebrow="Notre mission"
+              title="Donner aux dirigeants les moyens de bâtir, financer et faire durer."
+            />
           </Reveal>
           <Reveal delay={120}>
-            <div className="space-y-5 text-pretty leading-relaxed text-cream/65">
+            <div className="space-y-5 text-pretty leading-relaxed text-stone-500">
               <p>
                 Nous croyons qu'entreprendre ne devrait pas s'arrêter à la
                 création d'une société. Les vraies questions arrivent ensuite :
@@ -90,18 +93,19 @@ export default function About() {
         </div>
       </section>
 
-      {/* Valeurs */}
-      <section className="border-y border-cream/10 bg-ink-950 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      {/* Valeurs — section sombre */}
+      <section className="relative overflow-hidden bg-ink-950 py-20 text-paper-100 sm:py-28">
+        <div className="grain absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <SectionHeading eyebrow="Nos valeurs" title="Ce qui guide chaque décision" />
+            <SectionHeading onDark eyebrow="Nos valeurs" title="Ce qui guide chaque décision" />
           </Reveal>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-cream/10 bg-cream/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-paper-200/10 bg-paper-200/10 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} delay={(i % 4) * 80}>
-                <div className="flex h-full flex-col bg-ink-900 p-8 transition-colors duration-500 hover:bg-ink-800">
-                  <h3 className="text-xl text-cream">{v.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-cream/60">
+                <div className="flex h-full flex-col bg-ink-950 p-8 transition-colors duration-500 hover:bg-ink-800">
+                  <h3 className="text-xl text-paper-50">{v.title}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-paper-200/65">
                     {v.body}
                   </p>
                 </div>
@@ -112,22 +116,22 @@ export default function About() {
       </section>
 
       {/* Histoire / timeline */}
-      <section className="py-20 sm:py-28">
+      <section className="bg-paper-100 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
             <SectionHeading eyebrow="Notre histoire" title="Du logiciel à la maison d'investissement" />
           </Reveal>
-          <ol className="mt-14 space-y-px overflow-hidden rounded-2xl border border-cream/10">
+          <ol className="mt-14 space-y-px overflow-hidden rounded-2xl border border-ink-900/10 bg-ink-900/10">
             {TIMELINE.map((t, i) => (
               <Reveal key={t.phase} delay={i * 70}>
-                <li className="grid gap-4 bg-ink-900 p-8 transition-colors duration-500 hover:bg-ink-800 sm:grid-cols-[0.3fr_1fr] sm:items-baseline sm:p-10">
+                <li className="grid gap-4 bg-paper-50 p-8 transition-colors duration-500 hover:bg-paper-200/60 sm:grid-cols-[0.3fr_1fr] sm:items-baseline sm:p-10">
                   <div className="flex items-baseline gap-4">
-                    <span className="font-display text-sm text-gold-400">
+                    <span className="label font-display text-base text-pine-700">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-display text-xl text-cream">{t.phase}</h3>
+                    <h3 className="font-display text-xl text-ink-900">{t.phase}</h3>
                   </div>
-                  <p className="text-pretty leading-relaxed text-cream/65">
+                  <p className="text-pretty leading-relaxed text-stone-500">
                     {t.body}
                   </p>
                 </li>
@@ -138,10 +142,10 @@ export default function About() {
       </section>
 
       {/* Entité légale */}
-      <section className="border-t border-cream/10 bg-ink-950 py-20 sm:py-24">
+      <section className="bg-paper-200/50 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <div className="grid gap-8 rounded-2xl border border-cream/10 bg-ink-900 p-8 sm:grid-cols-2 sm:p-12 lg:grid-cols-4">
+            <div className="grid gap-8 rounded-2xl border border-ink-900/10 bg-paper-50 p-8 sm:grid-cols-2 sm:p-12 lg:grid-cols-4">
               <Info label="Entité" value={SITE.legalName} />
               <Info label="Registre de commerce" value={SITE.rcs} />
               <Info label="TVA intracommunautaire" value={`TVA ${SITE.tva}`} />
@@ -162,8 +166,8 @@ export default function About() {
 function Info({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.22em] text-cream/40">{label}</p>
-      <p className="mt-2 text-cream/85">{value}</p>
+      <p className="label text-stone-500">{label}</p>
+      <p className="mt-2 text-ink-900">{value}</p>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-cream/10 bg-ink-900/80 backdrop-blur-xl"
+          ? "border-b border-ink-900/10 bg-paper-100/80 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -43,9 +43,9 @@ export function Navbar() {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `relative text-sm transition-colors duration-200 ${
-                  isActive ? "text-cream" : "text-cream/60 hover:text-cream"
-                } after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-gold-500 after:transition-all after:duration-300 ${
+                `label !tracking-[0.12em] relative transition-colors duration-200 ${
+                  isActive ? "text-ink-900" : "text-stone-500 hover:text-ink-900"
+                } after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-pine-600 after:transition-all after:duration-300 ${
                   isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
                 }`
               }
@@ -55,7 +55,7 @@ export function Navbar() {
           ))}
           <Link
             to="/contact"
-            className="rounded-full border border-cream/18 px-5 py-2 text-sm text-cream transition-all duration-300 hover:border-gold-500/60 hover:text-gold-300"
+            className="rounded-full border border-ink-900/20 px-5 py-2 text-sm text-ink-900 transition-all duration-300 hover:border-ink-900 hover:bg-ink-900 hover:text-paper-50"
           >
             Nous écrire
           </Link>
@@ -70,17 +70,17 @@ export function Navbar() {
         >
           <span className="relative block h-3 w-6">
             <span
-              className={`absolute left-0 h-px w-6 bg-cream transition-all duration-300 ${
+              className={`absolute left-0 h-px w-6 bg-ink-900 transition-all duration-300 ${
                 open ? "top-1.5 rotate-45" : "top-0"
               }`}
             />
             <span
-              className={`absolute left-0 top-1.5 h-px w-6 bg-cream transition-all duration-300 ${
+              className={`absolute left-0 top-1.5 h-px w-6 bg-ink-900 transition-all duration-300 ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`absolute left-0 h-px w-6 bg-cream transition-all duration-300 ${
+              className={`absolute left-0 h-px w-6 bg-ink-900 transition-all duration-300 ${
                 open ? "top-1.5 -rotate-45" : "top-3"
               }`}
             />
@@ -90,17 +90,16 @@ export function Navbar() {
 
       {/* Menu mobile */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col bg-ink-950/98 px-6 pt-28 backdrop-blur-xl transition-all duration-400 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col bg-paper-50/98 px-6 pt-28 backdrop-blur-xl transition-all duration-400 md:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="flex flex-col gap-2">
-          {NAV.map((item, i) => (
+        <nav className="flex flex-col">
+          {NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
-              className="border-b border-cream/10 py-5 font-display text-3xl text-cream/90"
-              style={{ transitionDelay: `${i * 40}ms` }}
+              className="border-b border-ink-900/10 py-5 font-display text-3xl text-ink-900"
             >
               {item.label}
             </NavLink>

@@ -1,44 +1,45 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  STARTWISE — design tokens                                          */
-/*  Palette : encre profonde · papier chaud · champagne/or · forêt    */
+/*  STARTWISE — design system                                          */
+/*  Parti pris éditorial clair : crème · noir · vert pin · gris        */
 /* ------------------------------------------------------------------ */
 @theme {
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Ink — fonds sombres */
-  --color-ink-950: #090c0b;
-  --color-ink-900: #0e1311;
-  --color-ink-800: #141b18;
-  --color-ink-700: #1b2420;
-  --color-ink-600: #273430;
+  /* Crème — fonds clairs (base du site) */
+  --color-paper-50: #fdfcf7;
+  --color-paper-100: #f4f1e8;
+  --color-paper-200: #ece7da;
+  --color-paper-300: #ddd6c4;
 
-  /* Paper — fonds clairs chauds */
-  --color-paper-50: #faf7f1;
-  --color-paper-100: #f5f1e9;
-  --color-paper-200: #ece6d9;
-  --color-paper-300: #ddd4c2;
+  /* Noir / charbon — texte & sections sombres */
+  --color-ink-950: #0b0e0c;
+  --color-ink-900: #101412;
+  --color-ink-800: #171c19;
+  --color-ink-700: #212823;
 
-  /* Champagne / or — accent principal */
-  --color-gold-300: #e3cf9f;
-  --color-gold-400: #d4b878;
-  --color-gold-500: #c6a15b;
-  --color-gold-600: #a9854a;
+  /* Gris — secondaire, bordures, libellés */
+  --color-stone-300: #c4c1b6;
+  --color-stone-400: #9d9b90;
+  --color-stone-500: #6f6e65;
+  --color-stone-600: #4c4b44;
 
-  /* Forêt — accent secondaire sobre */
-  --color-forest-700: #1f3a31;
-  --color-forest-600: #2a4c40;
-  --color-forest-500: #386555;
-
-  --color-cream: #ede8dd;
-  --color-muted: #9aa39d;
+  /* Vert pin — accent de marque */
+  --color-pine-900: #0e2c22;
+  --color-pine-800: #133a2d;
+  --color-pine-700: #1a5341;
+  --color-pine-600: #216a53;
+  --color-pine-500: #2d8768;
+  --color-pine-300: #83b7a3;
+  --color-pine-200: #abd0c0;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -49,16 +50,16 @@
 
   body {
     margin: 0;
-    background-color: var(--color-ink-900);
-    color: var(--color-cream);
+    background-color: var(--color-paper-100);
+    color: var(--color-ink-900);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv01";
     overflow-x: hidden;
   }
 
   ::selection {
-    background: var(--color-gold-500);
-    color: var(--color-ink-950);
+    background: var(--color-pine-700);
+    color: var(--color-paper-50);
   }
 
   h1, h2, h3, h4 {
@@ -68,46 +69,35 @@
     line-height: 1.04;
   }
 
-  /* Scrollbar discret */
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: var(--color-ink-950); }
+  ::-webkit-scrollbar { width: 11px; }
+  ::-webkit-scrollbar-track { background: var(--color-paper-200); }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-ink-600);
+    background: var(--color-stone-300);
     border-radius: 999px;
-    border: 2px solid var(--color-ink-950);
+    border: 3px solid var(--color-paper-200);
   }
 }
 
 @layer utilities {
-  /* Grain subtil pour casser l'aspect "flat" */
+  /* Grain subtil pour casser l'aspect "flat" (sombre comme clair) */
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
 
-  /* Filet hairline doré */
-  .hairline {
-    background-image: linear-gradient(
-      90deg,
-      transparent,
-      color-mix(in srgb, var(--color-gold-500) 55%, transparent),
-      transparent
-    );
-  }
-
-  /* Dégradé texte champagne */
-  .text-gold-grad {
-    background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-600));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Libellés techniques en mono */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   /* Reveal au scroll */
