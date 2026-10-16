@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  STARTWISE — design tokens                                          */
+/*  Palette : encre profonde · papier chaud · champagne/or · forêt    */
+/* ------------------------------------------------------------------ */
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+
+  /* Ink — fonds sombres */
+  --color-ink-950: #090c0b;
+  --color-ink-900: #0e1311;
+  --color-ink-800: #141b18;
+  --color-ink-700: #1b2420;
+  --color-ink-600: #273430;
+
+  /* Paper — fonds clairs chauds */
+  --color-paper-50: #faf7f1;
+  --color-paper-100: #f5f1e9;
+  --color-paper-200: #ece6d9;
+  --color-paper-300: #ddd4c2;
+
+  /* Champagne / or — accent principal */
+  --color-gold-300: #e3cf9f;
+  --color-gold-400: #d4b878;
+  --color-gold-500: #c6a15b;
+  --color-gold-600: #a9854a;
+
+  /* Forêt — accent secondaire sobre */
+  --color-forest-700: #1f3a31;
+  --color-forest-600: #2a4c40;
+  --color-forest-500: #386555;
+
+  --color-cream: #ede8dd;
+  --color-muted: #9aa39d;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink-900);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-gold-500);
+    color: var(--color-ink-950);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  /* Scrollbar discret */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink-950); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-600);
+    border-radius: 999px;
+    border: 2px solid var(--color-ink-950);
+  }
+}
+
+@layer utilities {
+  /* Grain subtil pour casser l'aspect "flat" */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Filet hairline doré */
+  .hairline {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-gold-500) 55%, transparent),
+      transparent
+    );
+  }
+
+  /* Dégradé texte champagne */
+  .text-gold-grad {
+    background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Reveal au scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+}
