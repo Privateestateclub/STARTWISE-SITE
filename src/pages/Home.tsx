@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
 import { Amp, Button, Eyebrow, SectionHeading } from "../components/ui";
 import { ProductMark } from "../components/ProductMark";
+import { LoadingName } from "../components/LoadingName";
 import { PRODUCTS, SERVICE_IDS, type Product } from "../data/site";
 import { useLang } from "../i18n";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -209,7 +210,9 @@ function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-7 flex items-center gap-3">
           <ProductMark id={product.id} className="h-8 w-8 flex-none" />
-          <h3 className="font-display text-3xl text-ink-900">{p.name}</h3>
+          <h3 className="font-display text-3xl text-ink-900">
+            {product.status === "project" ? <LoadingName /> : p.name}
+          </h3>
         </div>
         <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-stone-500">
           {p.blurb}

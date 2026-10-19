@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { SITE, NAV, PRODUCTS } from "../data/site";
+import { LoadingName } from "./LoadingName";
 import { useLang } from "../i18n";
 
 export function Footer() {
@@ -60,7 +61,11 @@ export function Footer() {
                   </li>
                 ) : (
                   <li key={p.id} className="text-paper-200/75">
-                    {t.products[p.id].name}
+                    {p.status === "project" ? (
+                      <LoadingName small />
+                    ) : (
+                      t.products[p.id].name
+                    )}
                     <span className="ml-1.5 text-paper-200/35">
                       · {t.status[p.status]}
                     </span>

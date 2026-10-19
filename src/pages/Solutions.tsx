@@ -2,6 +2,7 @@ import { PageHeader } from "../components/PageHeader";
 import { Reveal } from "../components/Reveal";
 import { Amp, Button, SectionHeading } from "../components/ui";
 import { ProductMark } from "../components/ProductMark";
+import { LoadingName } from "../components/LoadingName";
 import { PRODUCTS, SERVICE_IDS } from "../data/site";
 import { useLang } from "../i18n";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -48,7 +49,11 @@ export default function Solutions() {
                       <div className="mt-3 flex items-center gap-3">
                         <ProductMark id={product.id} className="h-8 w-8 flex-none" />
                         <h3 className="font-display text-3xl text-ink-900">
-                          {p.name}
+                          {product.status === "project" ? (
+                            <LoadingName />
+                          ) : (
+                            p.name
+                          )}
                         </h3>
                       </div>
                       <p className="label mt-2 text-stone-500">{p.category}</p>

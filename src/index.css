@@ -92,6 +92,53 @@
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
 
+  /* Signe de chargement (produit en projet, nom à venir) */
+  .loading-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    vertical-align: middle;
+  }
+  .loading-dots .loading-dot {
+    width: 0.42em;
+    height: 0.42em;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.25;
+    animation: loadingDot 1.2s infinite ease-in-out both;
+  }
+  .loading-dots.is-small .loading-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+  .loading-dots .loading-dot:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+  .loading-dots .loading-dot:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+  .group:hover .loading-dots .loading-dot {
+    animation-duration: 0.7s;
+  }
+  @keyframes loadingDot {
+    0%,
+    70%,
+    100% {
+      opacity: 0.2;
+      transform: translateY(0);
+    }
+    35% {
+      opacity: 1;
+      transform: translateY(-0.28em);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loading-dots .loading-dot {
+      animation: none;
+      opacity: 0.5;
+    }
+  }
+
   /* Libellés techniques en mono */
   .label {
     font-family: var(--font-mono);
