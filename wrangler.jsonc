@@ -1,0 +1,11 @@
+{
+  // Déploiement Cloudflare (Workers Static Assets) pour le site statique Vite.
+  // Build : `npm run build` → dossier `dist` ; Deploy : `npx wrangler deploy`.
+  "name": "startwise-site",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./dist",
+    // Sert index.html pour toutes les routes inconnues → routing SPA (react-router).
+    "not_found_handling": "single-page-application"
+  }
+}
