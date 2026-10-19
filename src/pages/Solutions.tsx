@@ -1,6 +1,6 @@
 import { PageHeader } from "../components/PageHeader";
 import { Reveal } from "../components/Reveal";
-import { Button, SectionHeading } from "../components/ui";
+import { Amp, Button, SectionHeading } from "../components/ui";
 import { PRODUCTS, SERVICES } from "../data/site";
 import { ProductMark } from "../components/ProductMark";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -90,7 +90,7 @@ export default function Solutions() {
             <SectionHeading
               onDark
               eyebrow="Les expertises"
-              title="Financement, capital & conseil"
+              title={<Amp>Financement, capital & conseil</Amp>}
               intro="Nous accompagnons dirigeants et investisseurs sur les décisions structurantes, avec la rigueur et le réseau d'un acteur financier luxembourgeois."
             />
           </Reveal>
@@ -99,19 +99,19 @@ export default function Solutions() {
             {SERVICES.map((s, i) => (
               <Reveal key={s.id} delay={(i % 2) * 90}>
                 <article className="flex h-full flex-col rounded-2xl border border-paper-200/12 bg-ink-900 p-8 transition-colors duration-500 hover:bg-ink-800 sm:p-10">
-                  <div className="flex items-center gap-4">
-                    <span className="label flex h-10 w-10 flex-none items-center justify-center rounded-full border border-pine-400/40 font-display text-base text-pine-400">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-pretty text-2xl text-paper-50">{s.title}</h3>
-                  </div>
-                  <p className="mt-5 text-pretty leading-relaxed text-paper-200/70">
+                  <span className="label text-pine-400">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-5 text-pretty text-2xl leading-snug text-paper-50">
+                    <Amp>{s.title}</Amp>
+                  </h3>
+                  <p className="mt-4 text-pretty text-sm leading-relaxed text-paper-200/70">
                     {s.summary}
                   </p>
-                  <ul className="mt-6 grid gap-2.5 text-sm text-paper-200/85 sm:grid-cols-2">
+                  <ul className="mt-7 space-y-3 border-t border-paper-200/10 pt-6 text-sm text-paper-200/85">
                     {s.points.map((pt) => (
-                      <li key={pt} className="flex items-start gap-2.5">
-                        <span className="mt-2 h-1 w-1 flex-none rounded-full bg-pine-400" />
+                      <li key={pt} className="flex items-start gap-3">
+                        <span className="mt-2.5 h-px w-3.5 flex-none bg-pine-400/80" />
                         {pt}
                       </li>
                     ))}

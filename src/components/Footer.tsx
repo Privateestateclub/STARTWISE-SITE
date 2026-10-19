@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <Logo onDark />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-paper-200/60">
-              {SITE.baseline} Un groupe luxembourgeois qui conçoit des produits
+              {SITE.baseline} Une société luxembourgeoise qui conçoit des produits
               et structure le capital, le financement et la croissance.
             </p>
           </div>
@@ -42,7 +42,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="label text-paper-200/40">Le groupe</h3>
+            <h3 className="label text-paper-200/40">Nos produits</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {PRODUCTS.map((p) =>
                 p.href ? (

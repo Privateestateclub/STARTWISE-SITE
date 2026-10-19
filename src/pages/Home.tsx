@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
-import { Button, Eyebrow, SectionHeading } from "../components/ui";
+import { Amp, Button, Eyebrow, SectionHeading } from "../components/ui";
 import { PRODUCTS, SERVICES, STATS, SITE } from "../data/site";
 import { ProductMark } from "../components/ProductMark";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -9,7 +9,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export default function Home() {
   usePageMeta(
     "Investissement, conseil & technologie · Luxembourg",
-    "STARTWISE S.à r.l. — groupe luxembourgeois qui conçoit des produits numériques et accompagne dirigeants et investisseurs : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
+    "STARTWISE S.à r.l. — société luxembourgeoise qui conçoit des produits numériques et accompagne dirigeants et investisseurs : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
   );
   return (
     <>
@@ -45,7 +45,7 @@ function Hero() {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <Eyebrow>Groupe luxembourgeois · investissement · conseil · technologie</Eyebrow>
+          <Eyebrow>Société luxembourgeoise · investissement · conseil · technologie</Eyebrow>
         </Reveal>
 
         <Reveal delay={80}>
@@ -58,7 +58,7 @@ function Hero() {
 
         <Reveal delay={160}>
           <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-stone-500">
-            {SITE.legalName} est un groupe luxembourgeois qui conçoit des
+            {SITE.legalName} est une société luxembourgeoise qui conçoit des
             produits numériques et accompagne dirigeants et investisseurs : du
             financement immobilier à la levée de fonds, de la gestion de
             portefeuille au conseil stratégique.
@@ -67,7 +67,7 @@ function Hero() {
 
         <Reveal delay={240}>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button to="/produits-services">Découvrir le groupe</Button>
+            <Button to="/produits-services">Découvrir STARTWISE</Button>
             <Button to="/contact" variant="ghost">
               Prendre contact
             </Button>
@@ -104,10 +104,10 @@ function Positioning() {
         <Reveal>
           <SectionHeading
             onDark
-            eyebrow="Le groupe"
+            eyebrow="La société"
             title={
               <>
-                Un seul groupe,
+                Une seule société,
                 <br /> deux manières de créer de la valeur.
               </>
             }
@@ -259,7 +259,7 @@ function Expertises() {
           <SectionHeading
             onDark
             eyebrow="Les expertises"
-            title="Financement, capital & conseil"
+            title={<Amp>Financement, capital & conseil</Amp>}
             intro="Au-delà du logiciel, STARTWISE accompagne dirigeants et investisseurs sur les décisions qui engagent l'avenir de leur patrimoine et de leur entreprise."
           />
         </Reveal>
@@ -272,15 +272,15 @@ function Expertises() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 text-pretty text-2xl text-paper-50">
-                  {s.title}
+                  <Amp>{s.title}</Amp>
                 </h3>
                 <p className="mt-4 text-pretty text-sm leading-relaxed text-paper-200/70">
                   {s.summary}
                 </p>
-                <ul className="mt-6 space-y-2.5 text-sm text-paper-200/85">
+                <ul className="mt-6 space-y-3 text-sm text-paper-200/85">
                   {s.points.slice(0, 3).map((pt) => (
-                    <li key={pt} className="flex items-start gap-2.5">
-                      <span className="mt-2 h-1 w-1 flex-none rounded-full bg-pine-400" />
+                    <li key={pt} className="flex items-start gap-3">
+                      <span className="mt-2.5 h-px w-3.5 flex-none bg-pine-400/80" />
                       {pt}
                     </li>
                   ))}

@@ -1,5 +1,23 @@
 import { Link } from "react-router-dom";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
+
+/**
+ * Rend les « & » d'un titre serif dans la police sans : l'esperluette
+ * décorative de Fraunces ressemble à un « @ », celle-ci est classique.
+ */
+export function Amp({ children }: { children: string }) {
+  const parts = children.split("&");
+  return (
+    <>
+      {parts.map((p, i) => (
+        <Fragment key={i}>
+          {i > 0 && <span className="font-sans font-normal">&amp;</span>}
+          {p}
+        </Fragment>
+      ))}
+    </>
+  );
+}
 
 export function Eyebrow({
   children,

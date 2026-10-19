@@ -33,19 +33,19 @@ const TIMELINE = [
     body: "Nous avons commencé par le logiciel, avec LETZSETUP pour la création de sociétés, rejoint par OWNSET, aujourd'hui opérationnel, et le projet Compta.",
   },
   {
-    phase: "Le groupe",
+    phase: "La société",
     body: "Autour du studio, nous avons structuré un pôle de services financiers et de conseil : financement immobilier, levée de fonds, gestion de portefeuille, accompagnement des dirigeants.",
   },
   {
     phase: "Aujourd'hui",
-    body: "STARTWISE réunit les deux : un groupe luxembourgeois qui conçoit des produits et structure le capital de ses clients, de l'idée jusqu'à la croissance.",
+    body: "STARTWISE réunit les deux : une société luxembourgeoise qui conçoit des produits et structure le capital de ses clients, de l'idée jusqu'à la croissance.",
   },
 ];
 
 export default function About() {
   usePageMeta(
     "À propos",
-    "Le groupe derrière les produits et le capital : STARTWISE réunit un studio de produits numériques et une expertise en financement, investissement et conseil au Luxembourg."
+    "La société derrière les produits et le capital : STARTWISE réunit un studio de produits numériques et une expertise en financement, investissement et conseil au Luxembourg."
   );
   return (
     <>
@@ -53,11 +53,11 @@ export default function About() {
         eyebrow="À propos"
         title={
           <>
-            Le groupe derrière
+            La société derrière
             <br /> les produits et le capital.
           </>
         }
-        intro={`${SITE.legalName} est un groupe luxembourgeois qui réunit un studio de produits numériques et une expertise en financement, investissement et conseil.`}
+        intro={`${SITE.legalName} est une société luxembourgeoise qui réunit un studio de produits numériques et une expertise en financement, investissement et conseil.`}
       />
 
       {/* Mission */}

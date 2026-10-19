@@ -1,7 +1,7 @@
 import { useId } from "react";
 
 /**
- * Marque (logo) d'un produit du groupe, en couleurs d'origine.
+ * Marque (logo) d'un produit STARTWISE, en couleurs d'origine.
  * Retourne `null` si aucun logo n'est disponible pour cet identifiant.
  */
 export function ProductMark({
