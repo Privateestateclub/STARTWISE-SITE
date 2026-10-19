@@ -5,7 +5,7 @@
 /*  Parti pris éditorial clair : crème · noir · vert pin · gris        */
 /* ------------------------------------------------------------------ */
 @theme {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Spectral", ui-serif, Georgia, serif;
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 

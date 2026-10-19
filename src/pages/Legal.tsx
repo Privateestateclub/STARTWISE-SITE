@@ -55,7 +55,7 @@ export default function Legal() {
 
               <Block title="Propriété intellectuelle">
                 <p>
-                  L'ensemble des éléments du site (textes, visuels, logos, marques,
+                  L'ensemble des éléments du site (textes, visuels, logos,
                   identité graphique et code) est la propriété de {SITE.legalName}{" "}
                   ou de ses partenaires, et est protégé par les lois en vigueur
                   relatives à la propriété intellectuelle. Toute reproduction ou
@@ -63,8 +63,8 @@ export default function Legal() {
                   est interdite.
                 </p>
                 <p className="mt-3">
-                  Les marques des produits de STARTWISE (notamment LETZSETUP, OWNSET)
-                  restent la propriété de leurs titulaires respectifs.
+                  LETZSETUP et OWNSET sont des noms désignant des produits et
+                  services édités par {SITE.legalName}.
                 </p>
               </Block>
 
