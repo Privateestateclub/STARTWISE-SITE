@@ -8,7 +8,7 @@ const SUBJECTS = [
   "Produits numériques",
   "Financement immobilier",
   "Levée de fonds",
-  "Gestion de portefeuille",
+  "Analyse de portefeuille",
   "Conseil & accompagnement",
   "Autre",
 ];

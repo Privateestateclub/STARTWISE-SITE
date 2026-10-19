@@ -34,7 +34,7 @@ const TIMELINE = [
   },
   {
     phase: "La société",
-    body: "Autour du studio, nous avons structuré un pôle de services financiers et de conseil : financement immobilier, levée de fonds, gestion de portefeuille, accompagnement des dirigeants.",
+    body: "Autour du studio, nous avons structuré un pôle de services financiers et de conseil : financement immobilier, levée de fonds, analyse de portefeuille, accompagnement des dirigeants.",
   },
   {
     phase: "Aujourd'hui",

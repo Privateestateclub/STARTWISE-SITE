@@ -50,7 +50,7 @@ export function Footer() {
                     <a
                       href={p.href}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="text-paper-200/75 transition hover:text-pine-300"
                     >
                       {p.name} ↗

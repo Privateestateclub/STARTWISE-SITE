@@ -9,7 +9,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export default function Home() {
   usePageMeta(
     "Investissement, conseil & technologie · Luxembourg",
-    "STARTWISE S.à r.l. — société luxembourgeoise qui conçoit des produits numériques et accompagne dirigeants et investisseurs : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
+    "STARTWISE S.à r.l. — société luxembourgeoise qui conçoit des produits numériques et accompagne dirigeants et investisseurs : financement immobilier, levée de fonds, analyse de portefeuille et conseil."
   );
   return (
     <>
@@ -60,7 +60,7 @@ function Hero() {
           <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-stone-500">
             {SITE.legalName} est une société luxembourgeoise qui conçoit des
             produits numériques et accompagne dirigeants et investisseurs : du
-            financement immobilier à la levée de fonds, de la gestion de
+            financement immobilier à la levée de fonds, de l'analyse de
             portefeuille au conseil stratégique.
           </p>
         </Reveal>
@@ -197,7 +197,7 @@ function ProductCard({ product }: { product: (typeof PRODUCTS)[number] }) {
       <a
         href={product.href}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="group block h-full"
       >
         {children}

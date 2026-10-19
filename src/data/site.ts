@@ -46,6 +46,8 @@ export const PRODUCTS: Product[] = [
       "OWNSET est un produit numérique développé par STARTWISE, aujourd'hui opérationnel. Présentation détaillée à venir.",
     status: "live",
     statusLabel: "En ligne",
+    href: "https://ownset.io",
+    external: true,
   },
   {
     id: "compta",
@@ -94,14 +96,14 @@ export const SERVICES: Service[] = [
   },
   {
     id: "portefeuille",
-    title: "Gestion & structuration de portefeuille",
+    title: "Analyse & accompagnement de portefeuille",
     summary:
-      "Nous sélectionnons les asset managers et banques les mieux alignés avec vos objectifs.",
+      "Nous analysons votre portefeuille et vous accompagnons dans vos choix — sans gérer les actifs à votre place.",
     points: [
-      "Sélection d'asset managers et de banques",
-      "Allocation et architecture de portefeuille",
-      "Suivi de performance et reporting",
-      "Mise en concurrence des contreparties",
+      "Analyse de portefeuille et reporting",
+      "Recommandations et pistes d'optimisation",
+      "Comparaison d'asset managers et de banques",
+      "Aide à la décision, en toute indépendance",
     ],
   },
   {

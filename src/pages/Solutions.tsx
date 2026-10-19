@@ -8,7 +8,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export default function Solutions() {
   usePageMeta(
     "Produits & services",
-    "Le studio de produits numériques de STARTWISE (LETZSETUP, OWNSET, Compta) et ses expertises : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
+    "Le studio de produits numériques de STARTWISE (LETZSETUP, OWNSET, Compta) et ses expertises : financement immobilier, levée de fonds, analyse de portefeuille et conseil."
   );
   return (
     <>
