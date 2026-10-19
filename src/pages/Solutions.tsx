@@ -2,12 +2,13 @@ import { PageHeader } from "../components/PageHeader";
 import { Reveal } from "../components/Reveal";
 import { Button, SectionHeading } from "../components/ui";
 import { PRODUCTS, SERVICES } from "../data/site";
+import { ProductMark } from "../components/ProductMark";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function Solutions() {
   usePageMeta(
     "Produits & services",
-    "Le studio de produits numériques de STARTWISE (LETZSETUP, Ownset, Compta) et ses expertises : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
+    "Le studio de produits numériques de STARTWISE (LETZSETUP, OWNSET, Compta) et ses expertises : financement immobilier, levée de fonds, gestion de portefeuille et conseil."
   );
   return (
     <>
@@ -50,9 +51,12 @@ export default function Solutions() {
                       />
                       {p.statusLabel}
                     </span>
-                    <h3 className="mt-3 font-display text-3xl text-ink-900">
-                      {p.name}
-                    </h3>
+                    <div className="mt-3 flex items-center gap-3">
+                      <ProductMark id={p.id} className="h-8 w-8 flex-none" />
+                      <h3 className="font-display text-3xl text-ink-900">
+                        {p.name}
+                      </h3>
+                    </div>
                     <p className="label mt-2 text-stone-500">{p.category}</p>
                   </div>
 

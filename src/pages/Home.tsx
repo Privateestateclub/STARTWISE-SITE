@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
 import { Button, Eyebrow, SectionHeading } from "../components/ui";
 import { PRODUCTS, SERVICES, STATS, SITE } from "../data/site";
+import { ProductMark } from "../components/ProductMark";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function Home() {
@@ -103,10 +104,10 @@ function Positioning() {
         <Reveal>
           <SectionHeading
             onDark
-            eyebrow="La maison"
+            eyebrow="Le groupe"
             title={
               <>
-                Une seule maison,
+                Un seul groupe,
                 <br /> deux manières de créer de la valeur.
               </>
             }
@@ -218,7 +219,10 @@ function ProductCard({ product }: { product: (typeof PRODUCTS)[number] }) {
           </span>
         </div>
 
-        <h3 className="mt-7 font-display text-3xl text-ink-900">{product.name}</h3>
+        <div className="mt-7 flex items-center gap-3">
+          <ProductMark id={product.id} className="h-8 w-8 flex-none" />
+          <h3 className="font-display text-3xl text-ink-900">{product.name}</h3>
+        </div>
         <p className="mt-4 flex-1 text-pretty text-sm leading-relaxed text-stone-500">
           {product.blurb}
         </p>

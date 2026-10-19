@@ -38,14 +38,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "ownset",
-    name: "Ownset",
+    name: "OWNSET",
     category: "Produit numérique",
     blurb:
-      "Notre prochaine brique logicielle, en cours de construction au sein du studio.",
+      "Produit numérique du studio STARTWISE, déjà opérationnel.",
     description:
-      "Ownset est un produit numérique actuellement en développement dans notre studio. Nous dévoilerons son positionnement et sa feuille de route prochainement.",
-    status: "soon",
-    statusLabel: "Bientôt",
+      "OWNSET est un produit numérique développé par STARTWISE, aujourd'hui opérationnel. Présentation détaillée à venir.",
+    status: "live",
+    statusLabel: "En ligne",
   },
   {
     id: "compta",

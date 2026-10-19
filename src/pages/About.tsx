@@ -26,14 +26,14 @@ const VALUES = [
 const TIMELINE = [
   {
     phase: "Le constat",
-    body: "Créer une société au Luxembourg, la financer et la structurer restait fragmenté entre une multitude d'intervenants. Il manquait une maison capable de relier le tout.",
+    body: "Créer une société au Luxembourg, la financer et la structurer restait fragmenté entre une multitude d'intervenants. Il manquait un acteur capable de relier le tout.",
   },
   {
     phase: "Le studio",
-    body: "Nous avons commencé par le logiciel, avec LETZSETUP pour la création de sociétés, puis une feuille de route de produits complémentaires (Ownset, Compta).",
+    body: "Nous avons commencé par le logiciel, avec LETZSETUP pour la création de sociétés, rejoint par OWNSET, aujourd'hui opérationnel, et le projet Compta.",
   },
   {
-    phase: "La maison",
+    phase: "Le groupe",
     body: "Autour du studio, nous avons structuré un pôle de services financiers et de conseil : financement immobilier, levée de fonds, gestion de portefeuille, accompagnement des dirigeants.",
   },
   {
@@ -45,7 +45,7 @@ const TIMELINE = [
 export default function About() {
   usePageMeta(
     "À propos",
-    "La maison derrière les produits et le capital : STARTWISE réunit un studio de produits numériques et une expertise en financement, investissement et conseil au Luxembourg."
+    "Le groupe derrière les produits et le capital : STARTWISE réunit un studio de produits numériques et une expertise en financement, investissement et conseil au Luxembourg."
   );
   return (
     <>
@@ -53,7 +53,7 @@ export default function About() {
         eyebrow="À propos"
         title={
           <>
-            La maison derrière
+            Le groupe derrière
             <br /> les produits et le capital.
           </>
         }
@@ -78,7 +78,7 @@ export default function About() {
                 des fonds, choisir les bons partenaires bancaires.
               </p>
               <p>
-                STARTWISE a été pensée comme la maison qui relie ces mondes. D'un
+                STARTWISE a été pensée comme le trait d'union entre ces mondes. D'un
                 côté, un studio qui construit des produits numériques sobres et
                 efficaces. De l'autre, une expertise financière et de conseil au
                 service des dirigeants et des investisseurs.
@@ -119,7 +119,7 @@ export default function About() {
       <section className="bg-paper-100 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <SectionHeading eyebrow="Notre histoire" title="Du logiciel à la maison d'investissement" />
+            <SectionHeading eyebrow="Notre histoire" title="Du logiciel à l'investissement" />
           </Reveal>
           <ol className="mt-14 space-y-px overflow-hidden rounded-2xl border border-ink-900/10 bg-ink-900/10">
             {TIMELINE.map((t, i) => (

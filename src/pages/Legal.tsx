@@ -63,7 +63,7 @@ export default function Legal() {
                   est interdite.
                 </p>
                 <p className="mt-3">
-                  Les marques des produits du groupe (notamment LETZSETUP, Ownset)
+                  Les marques des produits du groupe (notamment LETZSETUP, OWNSET)
                   restent la propriété de leurs titulaires respectifs.
                 </p>
               </Block>
