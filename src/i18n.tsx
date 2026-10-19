@@ -285,8 +285,14 @@ const fr = {
     fieldMessage: "Votre message",
     placeholder: "Décrivez votre projet ou votre question…",
     send: "Envoyer le message",
+    sending: "Envoi…",
+    success:
+      "Merci, votre message a bien été envoyé. Nous revenons vers vous rapidement.",
+    error:
+      "Une erreur est survenue. Réessayez, ou écrivez-nous à contact@startwise.lu.",
+    fieldEmail: "Email",
     disclaimer:
-      "Ce formulaire ouvre votre messagerie pré-remplie — aucune donnée n'est stockée sur ce site.",
+      "En envoyant ce formulaire, vos informations nous sont transmises uniquement pour traiter votre demande.",
     mailName: "Nom",
     mailCompany: "Société",
     mailSubject: "Sujet",
@@ -643,8 +649,14 @@ const en: Dict = {
     fieldMessage: "Your message",
     placeholder: "Describe your project or your question…",
     send: "Send message",
+    sending: "Sending…",
+    success:
+      "Thank you — your message has been sent. We'll get back to you shortly.",
+    error:
+      "Something went wrong. Please try again, or email contact@startwise.lu.",
+    fieldEmail: "Email",
     disclaimer:
-      "This form opens your email client pre-filled — no data is stored on this site.",
+      "By submitting this form, your details are sent to us only to handle your request.",
     mailName: "Name",
     mailCompany: "Company",
     mailSubject: "Subject",

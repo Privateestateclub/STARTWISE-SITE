@@ -5,32 +5,55 @@ import { SITE } from "../data/site";
 import { useLang } from "../i18n";
 import { usePageMeta } from "../hooks/usePageMeta";
 
+// Clé publique Web3Forms (liée à contact@startwise.lu). Non secrète.
+const WEB3FORMS_ACCESS_KEY = "26c3ad0f-2a72-42aa-8f45-9c2020978b6a";
+
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function Contact() {
   const { t } = useLang();
   const c = t.contact;
   usePageMeta(t.meta.contact.title, t.meta.contact.desc);
   const [subject, setSubject] = useState(c.subjects[0]);
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") || "");
-    const company = String(data.get("company") || "");
-    const message = String(data.get("message") || "");
-    const body = [
-      `${c.mailName} : ${name}`,
-      company && `${c.mailCompany} : ${company}`,
-      `${c.mailSubject} : ${subject}`,
-      "",
-      message,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    const href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      `[Contact] ${subject}`
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
+    // Honeypot anti-spam : si rempli, on ignore.
+    if (data.get("botcheck")) return;
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `[Contact startwise.lu] ${subject}`,
+          from_name: "Site STARTWISE",
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company") || "—",
+          sujet: subject,
+          message: data.get("message"),
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus("success");
+        form.reset();
+        setSubject(c.subjects[0]);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -64,69 +87,125 @@ export default function Contact() {
 
           {/* Formulaire */}
           <Reveal delay={120}>
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-2xl border border-ink-900/10 bg-paper-50 p-7 sm:p-10"
-            >
-              <div className="grid gap-6 sm:grid-cols-2">
-                <Field label={c.fieldName} name="name" required />
-                <Field label={c.fieldCompany} name="company" />
-              </div>
-
-              <div className="mt-6">
-                <span className="label text-stone-500">{c.fieldSubject}</span>
-                <div className="mt-3 flex flex-wrap gap-2.5">
-                  {c.subjects.map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setSubject(item)}
-                      className={`rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
-                        subject === item
-                          ? "border-ink-900 bg-ink-900 text-paper-50"
-                          : "border-ink-900/15 text-stone-500 hover:border-ink-900/35"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label htmlFor="message" className="label text-stone-500">
-                  {c.fieldMessage}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="mt-3 w-full resize-none rounded-xl border border-ink-900/15 bg-paper-100 px-4 py-3 text-sm text-ink-900 placeholder:text-stone-400 focus:border-pine-600 focus:outline-none focus:ring-1 focus:ring-pine-600/40"
-                  placeholder={c.placeholder}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-paper-50 transition-all duration-300 hover:bg-ink-700 hover:shadow-[0_10px_30px_-12px] hover:shadow-ink-900/50 sm:w-auto"
-              >
-                {c.send}
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+            {status === "success" ? (
+              <div className="flex h-full min-h-[22rem] flex-col items-start justify-center rounded-2xl border border-pine-600/30 bg-paper-50 p-8 sm:p-10">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-pine-700 text-paper-50">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                </span>
+                <p className="mt-6 max-w-sm text-pretty text-lg leading-relaxed text-ink-900">
+                  {c.success}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="label mt-6 text-pine-700 transition hover:text-pine-600"
                 >
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </button>
-              <p className="mt-4 text-xs text-stone-400">{c.disclaimer}</p>
-            </form>
+                  {c.send}
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="rounded-2xl border border-ink-900/10 bg-paper-50 p-7 sm:p-10"
+              >
+                {/* Honeypot (caché) */}
+                <input
+                  type="text"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <Field label={c.fieldName} name="name" required />
+                  <Field
+                    label={c.fieldEmail}
+                    name="email"
+                    type="email"
+                    required
+                  />
+                </div>
+                <div className="mt-6">
+                  <Field label={c.fieldCompany} name="company" />
+                </div>
+
+                <div className="mt-6">
+                  <span className="label text-stone-500">{c.fieldSubject}</span>
+                  <div className="mt-3 flex flex-wrap gap-2.5">
+                    {c.subjects.map((item) => (
+                      <button
+                        key={item}
+                        type="button"
+                        onClick={() => setSubject(item)}
+                        className={`rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
+                          subject === item
+                            ? "border-ink-900 bg-ink-900 text-paper-50"
+                            : "border-ink-900/15 text-stone-500 hover:border-ink-900/35"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <label htmlFor="message" className="label text-stone-500">
+                    {c.fieldMessage}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    className="mt-3 w-full resize-none rounded-xl border border-ink-900/15 bg-paper-100 px-4 py-3 text-sm text-ink-900 placeholder:text-stone-400 focus:border-pine-600 focus:outline-none focus:ring-1 focus:ring-pine-600/40"
+                    placeholder={c.placeholder}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-paper-50 transition-all duration-300 hover:bg-ink-700 hover:shadow-[0_10px_30px_-12px] hover:shadow-ink-900/50 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                >
+                  {status === "sending" ? c.sending : c.send}
+                  {status !== "sending" && (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  )}
+                </button>
+
+                {status === "error" && (
+                  <p className="mt-4 text-sm text-red-700" role="alert">
+                    {c.error}
+                  </p>
+                )}
+                <p className="mt-4 text-xs text-stone-400">{c.disclaimer}</p>
+              </form>
+            )}
           </Reveal>
         </div>
       </section>
@@ -166,10 +245,12 @@ function ContactLine({
 function Field({
   label,
   name,
+  type = "text",
   required,
 }: {
   label: string;
   name: string;
+  type?: string;
   required?: boolean;
 }) {
   return (
@@ -180,6 +261,7 @@ function Field({
       <input
         id={name}
         name={name}
+        type={type}
         required={required}
         className="mt-3 w-full rounded-xl border border-ink-900/15 bg-paper-100 px-4 py-3 text-sm text-ink-900 placeholder:text-stone-400 focus:border-pine-600 focus:outline-none focus:ring-1 focus:ring-pine-600/40"
       />
