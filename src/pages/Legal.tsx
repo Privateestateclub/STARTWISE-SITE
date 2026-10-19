@@ -2,125 +2,91 @@ import type { ReactNode } from "react";
 import { PageHeader } from "../components/PageHeader";
 import { Reveal } from "../components/Reveal";
 import { SITE } from "../data/site";
+import { useLang } from "../i18n";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function Legal() {
-  usePageMeta("Mentions légales", "Mentions légales de STARTWISE S.à r.l.");
+  const { t } = useLang();
+  const l = t.legal;
+  usePageMeta(t.meta.legal.title, t.meta.legal.desc);
+
+  const mail = (
+    <a
+      href={`mailto:${SITE.email}`}
+      className="text-pine-700 transition hover:text-pine-600"
+    >
+      {SITE.email}
+    </a>
+  );
+
   return (
     <>
-      <PageHeader eyebrow="Informations légales" title="Mentions légales" />
+      <PageHeader eyebrow={l.eyebrow} title={l.title} />
 
       <section className="bg-paper-100 pb-28 pt-8">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <Reveal>
             <div className="space-y-12 text-pretty leading-relaxed text-stone-600">
-              <Block title="Éditeur du site">
+              <Block title={l.editorTitle}>
                 <p>
-                  Le présent site est édité par{" "}
+                  {l.editorIntro1}
                   <strong className="font-medium text-ink-900">
                     {SITE.legalName}
                   </strong>
-                  , société à responsabilité limitée de droit luxembourgeois.
+                  {l.editorIntro2}
                 </p>
                 <ul className="mt-4 space-y-1.5">
-                  <li>Siège social : {SITE.address}</li>
-                  <li>{SITE.rcs}</li>
-                  <li>Numéro de TVA : LU {SITE.tva.replace(/^LU/, "")}</li>
                   <li>
-                    Email :{" "}
-                    <a
-                      href={`mailto:${SITE.email}`}
-                      className="text-pine-700 transition hover:text-pine-600"
-                    >
-                      {SITE.email}
-                    </a>
+                    {l.seat}
+                    {SITE.address}
+                  </li>
+                  <li>{SITE.rcs}</li>
+                  <li>
+                    {l.vat}LU {SITE.tva.replace(/^LU/, "")}
+                  </li>
+                  <li>
+                    {l.email}
+                    {mail}
                   </li>
                 </ul>
               </Block>
 
-              <Block title="Directeur de la publication">
-                <p>
-                  Le directeur de la publication est le représentant légal de{" "}
-                  {SITE.legalName}.
-                </p>
+              <Block title={l.dirTitle}>
+                <p>{l.dirBody}</p>
               </Block>
 
-              <Block title="Hébergement">
-                <p>
-                  Le site est hébergé par Cloudflare, Inc., 101 Townsend Street,
-                  San Francisco, CA 94107, États-Unis — qui assure la diffusion et
-                  la mise à disposition du site.
-                </p>
+              <Block title={l.hostTitle}>
+                <p>{l.hostBody}</p>
               </Block>
 
-              <Block title="Propriété intellectuelle">
-                <p>
-                  L'ensemble des éléments du site (textes, visuels, logos,
-                  identité graphique et code) est la propriété de {SITE.legalName}{" "}
-                  ou de ses partenaires, et est protégé par les lois en vigueur
-                  relatives à la propriété intellectuelle. Toute reproduction ou
-                  représentation, totale ou partielle, sans autorisation préalable
-                  est interdite.
-                </p>
-                <p className="mt-3">
-                  LETZSETUP et OWNSET sont des noms désignant des produits et
-                  services édités par {SITE.legalName}.
-                </p>
+              <Block title={l.ipTitle}>
+                <p>{l.ipBody1}</p>
+                <p className="mt-3">{l.ipBody2}</p>
               </Block>
 
-              <Block title="Données personnelles">
+              <Block title={l.dataTitle}>
                 <p>
-                  Les données que vous nous transmettez via le formulaire de
-                  contact (ouvert dans votre messagerie) sont utilisées uniquement
-                  pour répondre à votre demande. Conformément au Règlement général
-                  sur la protection des données (RGPD) et à la législation
-                  luxembourgeoise applicable, vous disposez d'un droit d'accès, de
-                  rectification et de suppression de vos données, exerçable à
-                  l'adresse{" "}
-                  <a
-                    href={`mailto:${SITE.email}`}
-                    className="text-pine-700 transition hover:text-pine-600"
-                  >
-                    {SITE.email}
-                  </a>
-                  .
+                  {l.dataBody1a}
+                  {mail}.
                 </p>
-                <p className="mt-3">
-                  Ce site ne dépose pas de cookies de suivi publicitaire.
-                </p>
+                <p className="mt-3">{l.dataBody2}</p>
               </Block>
 
-              <Block title="Nature de l'information">
-                <p>
-                  Les informations présentées sur ce site ont une vocation
-                  générale et d'information. Elles ne constituent ni un conseil en
-                  investissement, ni une recommandation financière ou juridique
-                  personnalisée. Toute prestation fait l'objet d'un cadre
-                  contractuel spécifique.
-                </p>
+              <Block title={l.natureTitle}>
+                <p>{l.natureBody}</p>
               </Block>
 
-              <Block title="Responsabilité">
-                <p>
-                  {SITE.legalName} s'efforce d'assurer l'exactitude des
-                  informations diffusées mais ne saurait être tenue responsable des
-                  erreurs, omissions ou de l'indisponibilité du site. Les liens vers
-                  des sites tiers sont fournis à titre pratique ; {SITE.legalName}{" "}
-                  n'exerce aucun contrôle sur leur contenu.
-                </p>
+              <Block title={l.respTitle}>
+                <p>{l.respBody}</p>
               </Block>
 
-              <Block title="Droit applicable">
-                <p>
-                  Le présent site et ses mentions légales sont régis par le droit
-                  luxembourgeois. Tout litige relève de la compétence des
-                  juridictions du Grand-Duché de Luxembourg.
-                </p>
+              <Block title={l.lawTitle}>
+                <p>{l.lawBody}</p>
               </Block>
 
               <p className="border-t border-ink-900/10 pt-8 text-sm text-stone-400">
-                Dernière mise à jour :{" "}
-                {new Date().toLocaleDateString("fr-FR", {
+                {l.updated}
+                {new Date().toLocaleDateString(l.locale, {
                   year: "numeric",
                   month: "long",
                 })}

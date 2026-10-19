@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { SITE, NAV, PRODUCTS } from "../data/site";
+import { useLang } from "../i18n";
 
 export function Footer() {
+  const { t } = useLang();
   const year = new Date().getFullYear();
+
   return (
     <footer className="relative overflow-hidden bg-ink-950 text-paper-100">
       <div className="grain absolute inset-0" aria-hidden="true" />
@@ -12,20 +15,19 @@ export function Footer() {
           <div>
             <Logo onDark />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-paper-200/60">
-              {SITE.baseline} Une société luxembourgeoise qui conçoit des produits
-              et structure le capital, le financement et la croissance.
+              {t.footer.tagline}
             </p>
           </div>
 
           <div>
-            <h3 className="label text-paper-200/40">Naviguer</h3>
+            <h3 className="label text-paper-200/40">{t.footer.navigate}</h3>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <Link
                   to="/"
                   className="text-paper-200/75 transition hover:text-pine-300"
                 >
-                  Accueil
+                  {t.common.home}
                 </Link>
               </li>
               {NAV.map((n) => (
@@ -34,7 +36,7 @@ export function Footer() {
                     to={n.to}
                     className="text-paper-200/75 transition hover:text-pine-300"
                   >
-                    {n.label}
+                    {t.nav[n.key]}
                   </Link>
                 </li>
               ))}
@@ -42,7 +44,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="label text-paper-200/40">Nos produits</h3>
+            <h3 className="label text-paper-200/40">{t.footer.products}</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {PRODUCTS.map((p) =>
                 p.href ? (
@@ -53,14 +55,14 @@ export function Footer() {
                       rel="noopener noreferrer"
                       className="text-paper-200/75 transition hover:text-pine-300"
                     >
-                      {p.name} ↗
+                      {t.products[p.id].name} ↗
                     </a>
                   </li>
                 ) : (
                   <li key={p.id} className="text-paper-200/75">
-                    {p.name}
+                    {t.products[p.id].name}
                     <span className="ml-1.5 text-paper-200/35">
-                      · {p.statusLabel}
+                      · {t.status[p.status]}
                     </span>
                   </li>
                 )
@@ -88,17 +90,17 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-paper-200/10 pt-7 text-xs text-paper-200/45 sm:flex-row sm:items-center">
           <p>
-            © {year} {SITE.legalName}. Tous droits réservés.
+            © {year} {SITE.legalName}. {t.footer.rights}
           </p>
           <div className="flex gap-6">
             <Link
               to="/mentions-legales"
               className="transition hover:text-paper-100"
             >
-              Mentions légales
+              {t.footer.legal}
             </Link>
             <Link to="/contact" className="transition hover:text-paper-100">
-              Contact
+              {t.nav.contact}
             </Link>
           </div>
         </div>

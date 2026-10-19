@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
+import { LangSwitcher } from "./LangSwitcher";
 import { NAV } from "../data/site";
+import { useLang } from "../i18n";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,14 +53,15 @@ export function Navbar() {
                 }`
               }
             >
-              {item.label}
+              {t.nav[item.key]}
             </NavLink>
           ))}
+          <LangSwitcher />
           <Link
             to="/contact"
             className="rounded-full border border-ink-900/20 px-5 py-2 text-sm text-ink-900 transition-all duration-300 hover:border-ink-900 hover:bg-ink-900 hover:text-paper-50"
           >
-            Nous écrire
+            {t.nav.write}
           </Link>
         </nav>
 
@@ -65,7 +69,7 @@ export function Navbar() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-label={open ? "Fermer / Close" : "Menu"}
           aria-expanded={open}
         >
           <span className="relative block h-3 w-6">
@@ -101,10 +105,13 @@ export function Navbar() {
               to={item.to}
               className="border-b border-ink-900/10 py-5 font-display text-3xl text-ink-900"
             >
-              {item.label}
+              {t.nav[item.key]}
             </NavLink>
           ))}
         </nav>
+        <div className="mt-8">
+          <LangSwitcher />
+        </div>
       </div>
     </header>
   );
