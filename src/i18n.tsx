@@ -114,10 +114,11 @@ const fr = {
     },
     ownset: {
       name: "OWNSET",
-      category: "Produit numérique",
-      blurb: "Produit numérique du studio STARTWISE, déjà opérationnel.",
+      category: "Patrimoine immobilier",
+      blurb:
+        "La plateforme qui réunit votre patrimoine immobilier — documents, dépenses, entretien et valeur — en un seul espace.",
       description:
-        "OWNSET est un produit numérique développé par STARTWISE, aujourd'hui opérationnel. Présentation détaillée à venir.",
+        "OWNSET centralise documents, dépenses, entretien et valeur de vos biens immobiliers dans un espace clair et sécurisé. Scan intelligent des factures, passeport du bien en PDF, suivi des échéances et de la valeur nette : organiser aujourd'hui, valoriser demain.",
     },
     compta: {
       name: "Compta",
@@ -464,10 +465,11 @@ const en: Dict = {
     },
     ownset: {
       name: "OWNSET",
-      category: "Digital product",
-      blurb: "A digital product from the STARTWISE studio, already live.",
+      category: "Property wealth",
+      blurb:
+        "The platform that brings your property — documents, expenses, upkeep and value — into one clear space.",
       description:
-        "OWNSET is a digital product developed by STARTWISE and already operational. A detailed overview is coming soon.",
+        "OWNSET brings your properties' documents, expenses, upkeep and value together in one clear, secure space: smart invoice scanning, a PDF property passport, deadline and net-worth tracking. Organise today, grow tomorrow.",
     },
     compta: {
       name: "Compta",
