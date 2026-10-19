@@ -41,9 +41,11 @@ export default function Legal() {
                     {SITE.address}
                   </li>
                   <li>{SITE.rcs}</li>
+                  <li>{l.capital}</li>
                   <li>
                     {l.vat}LU {SITE.tva.replace(/^LU/, "")}
                   </li>
+                  <li>{l.permit}</li>
                   <li>
                     {l.email}
                     {mail}
@@ -70,6 +72,11 @@ export default function Legal() {
                   {mail}.
                 </p>
                 <p className="mt-3">{l.dataBody2}</p>
+                <p className="mt-3">{l.dataBody3}</p>
+              </Block>
+
+              <Block title={l.regTitle}>
+                <p>{l.regBody}</p>
               </Block>
 
               <Block title={l.natureTitle}>

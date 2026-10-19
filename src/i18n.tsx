@@ -302,9 +302,12 @@ const fr = {
     seat: "Siège social : ",
     vat: "Numéro de TVA : ",
     email: "Email : ",
+    capital: "Capital social : 12 000 €",
+    permit:
+      "Autorisation d'établissement (ministère de l'Économie) : n° 10156858 / 0.",
     dirTitle: "Directeur de la publication",
     dirBody:
-      "Le directeur de la publication est le représentant légal de STARTWISE S.à r.l.",
+      "Le directeur de la publication est Marc Gérard, gérant unique de STARTWISE S.à r.l.",
     hostTitle: "Hébergement",
     hostBody:
       "Le site est hébergé par Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis — qui assure la diffusion et la mise à disposition du site.",
@@ -317,6 +320,11 @@ const fr = {
     dataBody1a:
       "Les données que vous nous transmettez via le formulaire de contact (ouvert dans votre messagerie) sont utilisées uniquement pour répondre à votre demande. Conformément au Règlement général sur la protection des données (RGPD) et à la législation luxembourgeoise applicable, vous disposez d'un droit d'accès, de rectification et de suppression de vos données, exerçable à l'adresse ",
     dataBody2: "Ce site ne dépose pas de cookies de suivi publicitaire.",
+    dataBody3:
+      "STARTWISE S.à r.l. agit en qualité de responsable du traitement. Vous disposez également du droit d'introduire une réclamation auprès de la Commission nationale pour la protection des données (CNPD), autorité de contrôle luxembourgeoise.",
+    regTitle: "Statut réglementaire",
+    regBody:
+      "STARTWISE S.à r.l. n'est pas un professionnel du secteur financier (PSF) agréé et n'est ni agréée ni surveillée par la Commission de Surveillance du Secteur Financier (CSSF). Elle ne fournit pas de services d'investissement réglementés ni de gestion de portefeuille au sens de la réglementation financière ; ses prestations relèvent du conseil, de l'accompagnement et de la mise en relation.",
     natureTitle: "Nature de l'information",
     natureBody:
       "Les informations présentées sur ce site ont une vocation générale et d'information. Elles ne constituent ni un conseil en investissement, ni une recommandation financière ou juridique personnalisée. Toute prestation fait l'objet d'un cadre contractuel spécifique.",
@@ -651,9 +659,12 @@ const en: Dict = {
     seat: "Registered office: ",
     vat: "VAT number: ",
     email: "Email: ",
+    capital: "Share capital: €12,000",
+    permit:
+      "Business permit (Ministry of the Economy): no. 10156858 / 0.",
     dirTitle: "Publication director",
     dirBody:
-      "The publication director is the legal representative of STARTWISE S.à r.l.",
+      "The publication director is Marc Gérard, sole manager of STARTWISE S.à r.l.",
     hostTitle: "Hosting",
     hostBody:
       "The site is hosted by Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA — which ensures the distribution and availability of the site.",
@@ -666,6 +677,11 @@ const en: Dict = {
     dataBody1a:
       "The data you send us via the contact form (opened in your email client) is used solely to answer your request. In accordance with the General Data Protection Regulation (GDPR) and applicable Luxembourg law, you have a right to access, rectify and delete your data, which you can exercise at ",
     dataBody2: "This site does not set any advertising tracking cookies.",
+    dataBody3:
+      "STARTWISE S.à r.l. acts as data controller. You also have the right to lodge a complaint with the Commission nationale pour la protection des données (CNPD), the Luxembourg supervisory authority.",
+    regTitle: "Regulatory status",
+    regBody:
+      "STARTWISE S.à r.l. is not an authorised financial-sector professional (PSF) and is neither licensed nor supervised by the Commission de Surveillance du Secteur Financier (CSSF). It does not provide regulated investment services or portfolio management within the meaning of financial regulation; its services consist of advisory, support and introductions.",
     natureTitle: "Nature of the information",
     natureBody:
       "The information presented on this site is general and informational in nature. It constitutes neither investment advice nor a personalised financial or legal recommendation. Every engagement is governed by a specific contractual framework.",
